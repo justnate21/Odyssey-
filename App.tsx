@@ -20,20 +20,22 @@ const App: React.FC = () => {
     try {
       const result = await generateItinerary(selectedRegion.name, selectedTier, duration);
       setItinerary(result);
-      // Scroll to itinerary after short delay for animation
       setTimeout(() => {
         document.getElementById('itinerary-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
-    } catch (err) {
-      console.error(err);
-      setError("We encountered an issue generating your bespoke itinerary. Please try again.");
+    } catch (err: any) {
+      console.error("Generation Failed:", err);
+      setError(err.message || "We encountered an issue generating your bespoke itinerary. Please check your connection and try again.");
     } finally {
       setLoading(false);
     }
   };
 
   const handlePrint = () => {
-    window.print();
+    // Adding a small delay to ensure UI states are stable before print dialog opens
+    setTimeout(() => {
+      window.print();
+    }, 50);
   };
 
   const startPlanning = () => {
@@ -172,11 +174,23 @@ const App: React.FC = () => {
               </button>
 
               {error && (
-                <div className="mt-4 p-4 bg-red-50 border border-red-100 rounded-xl flex items-start space-x-3 text-red-600 text-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-3 text-red-700 text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
-                  <span>{error}</span>
+                  <div className="flex-1">
+                    <p className="font-bold mb-1">Planning Interrupted</p>
+                    <p className="opacity-90">{error}</p>
+                    {error.includes("API_KEY") && (
+                      <div className="mt-3 p-3 bg-white/50 rounded-lg border border-red-200">
+                        <p className="text-xs font-bold uppercase mb-1">Troubleshooting Step:</p>
+                        <p className="text-xs leading-relaxed">
+                          Since you are using Vercel, navigate to <strong>Settings &gt; Environment Variables</strong> in your Vercel Dashboard, 
+                          add <code>API_KEY</code>, and perform a <strong>New Deployment</strong>.
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -229,7 +243,7 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-10">
             <div className="text-center md:text-left">
-              <h2 className="text-2xl font-bold mb-2">ETHIOPIAN ODYSSEY</h2>
+              <h2 className="text-2xl font-bold mb-2 text-white">ETHIOPIAN ODYSSEY</h2>
               <p className="text-stone-400 text-sm">Bespoke Travel Planning since 2024</p>
             </div>
             <div className="flex space-x-6 text-sm font-medium text-stone-400">
