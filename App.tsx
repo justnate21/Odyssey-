@@ -179,15 +179,15 @@ const App: React.FC = () => {
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
                   <div className="flex-1">
-                    <p className="font-bold text-base mb-1">Redeployment Required</p>
+                    <p className="font-bold text-base mb-1">Configuration Needed</p>
                     <p className="text-sm opacity-90 leading-relaxed mb-3">{error}</p>
                     <div className="bg-white/60 p-3 rounded-lg border border-red-200 text-xs">
                       <p className="font-bold uppercase tracking-widest text-[10px] mb-1">Vercel Setup Guide:</p>
                       <ol className="list-decimal list-inside space-y-1 opacity-80">
-                        <li>Go to <strong>Settings</strong> > <strong>Environment Variables</strong> in Vercel.</li>
+                        <li>Go to <strong>Settings</strong> &gt; <strong>Environment Variables</strong> in Vercel.</li>
                         <li>Add Key: <code>API_KEY</code></li>
                         <li>Add Value: (Your Google Gemini Key)</li>
-                        <li>Go to <strong>Deployments</strong> tab, click the three dots (...) on your latest build, and select <strong>Redeploy</strong>.</li>
+                        <li>Go to <strong>Deployments</strong> tab, find your latest build, click <strong>...</strong> and select <strong>Redeploy</strong>.</li>
                       </ol>
                     </div>
                   </div>
