@@ -7,16 +7,15 @@ export const generateItinerary = async (
   tier: PricingTier,
   duration: number
 ): Promise<Itinerary> => {
-  // Accessing the API Key as per guidelines
-  // Note: On Vercel, this is injected at build time. 
+  // Use process.env.API_KEY as per standard guidelines. 
+  // Free tier is available via Google AI Studio (aistudio.google.com)
   const apiKey = process.env.API_KEY;
 
   if (!apiKey || apiKey === "undefined" || apiKey === "") {
-    console.error("API_KEY is missing. Current value:", apiKey);
-    throw new Error("API_KEY not found. Please add 'API_KEY' to your Vercel Environment Variables, then go to the 'Deployments' tab and click 'Redeploy'.");
+    console.error("API_KEY is missing.");
+    throw new Error("API_KEY not found. Please ensure you have added your key to Vercel Environment Variables and redeployed.");
   }
 
-  // Initialize the AI client
   const ai = new GoogleGenAI({ apiKey });
 
   const prompt = `Generate a comprehensive ${duration}-day travel itinerary for a ${tier} traveler visiting the ${region} region of Ethiopia.
@@ -31,7 +30,8 @@ export const generateItinerary = async (
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-3-pro-preview",
+      // Using Flash model for faster performance and better free-tier availability
+      model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
