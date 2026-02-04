@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ethiopian Odyssey | Luxury Travel Planner</title>
+    <title>Ethiopian Odyssey | Bespoke Travel Planner</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -23,6 +23,21 @@
         }
         body {
           background-color: white !important;
+          color: black !important;
+        }
+        /* Ensure the itinerary covers full width in print */
+        main {
+          padding: 0 !important;
+          max-width: 100% !important;
+        }
+        #itinerary-section {
+          width: 100% !important;
+          grid-column: span 12 / span 12 !important;
+        }
+        /* Page break handling */
+        .bg-white {
+          box-shadow: none !important;
+          border: 1px solid #e5e7eb !important;
         }
       }
     </style>

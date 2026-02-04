@@ -7,16 +7,16 @@ export const generateItinerary = async (
   tier: PricingTier,
   duration: number
 ): Promise<Itinerary> => {
-  // Safe access to process.env to avoid ReferenceError: process is not defined
-  const env = typeof process !== 'undefined' ? process.env : (window as any).process?.env || {};
-  const apiKey = env.API_KEY;
+  // Accessing the API Key as per guidelines
+  // Note: On Vercel, this is injected at build time. 
+  const apiKey = process.env.API_KEY;
 
-  if (!apiKey) {
-    console.error("API_KEY is missing from environment variables.");
-    throw new Error("API_KEY not found. If you are on Vercel, please add API_KEY to your Environment Variables and redeploy.");
+  if (!apiKey || apiKey === "undefined" || apiKey === "") {
+    console.error("API_KEY is missing. Current value:", apiKey);
+    throw new Error("API_KEY not found. Please add 'API_KEY' to your Vercel Environment Variables, then go to the 'Deployments' tab and click 'Redeploy'.");
   }
 
-  // Initialize inside the function to ensure the environment is ready
+  // Initialize the AI client
   const ai = new GoogleGenAI({ apiKey });
 
   const prompt = `Generate a comprehensive ${duration}-day travel itinerary for a ${tier} traveler visiting the ${region} region of Ethiopia.

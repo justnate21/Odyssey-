@@ -21,25 +21,25 @@ const App: React.FC = () => {
       const result = await generateItinerary(selectedRegion.name, selectedTier, duration);
       setItinerary(result);
       setTimeout(() => {
-        document.getElementById('itinerary-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
+        const section = document.getElementById('itinerary-section');
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
     } catch (err: any) {
       console.error("Generation Failed:", err);
-      setError(err.message || "We encountered an issue generating your bespoke itinerary. Please check your connection and try again.");
+      setError(err.message || "An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   const handlePrint = () => {
-    // Adding a small delay to ensure UI states are stable before print dialog opens
-    setTimeout(() => {
-      window.print();
-    }, 50);
+    window.focus();
+    window.print();
   };
 
   const startPlanning = () => {
-    document.getElementById('destination')?.scrollIntoView({ behavior: 'smooth' });
+    const dest = document.getElementById('destination');
+    if (dest) dest.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -48,14 +48,14 @@ const App: React.FC = () => {
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
         
-        {/* Intro */}
+        {/* Hero Section */}
         <section className="mb-16 no-print text-center md:text-left">
           <h2 className="text-5xl md:text-6xl font-bold text-stone-900 mb-6 leading-tight">
             Discover the <span className="text-[#006233]">Cradle of Humanity</span>
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl leading-relaxed mb-8">
-            From the rock-hewn majesty of Lalibela to the tribal rhythms of the Omo Valley, 
-            design a journey that matches your pace and passion.
+            Experience the rock-hewn majesty of Lalibela and the tribal rhythms of the Omo Valley. 
+            Design a journey that matches your pace and passion.
           </p>
           <button 
             onClick={startPlanning}
@@ -66,7 +66,7 @@ const App: React.FC = () => {
         </section>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Form Side */}
+          {/* Form Configuration Side */}
           <aside className="lg:col-span-5 space-y-8 no-print">
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-stone-200">
               <h3 id="destination" className="text-2xl font-bold mb-6 flex items-center scroll-mt-24">
@@ -168,35 +168,35 @@ const App: React.FC = () => {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Crafting Itinerary...
+                    Crafting Plan...
                   </span>
                 ) : "Generate Bespoke Itinerary"}
               </button>
 
               {error && (
-                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-3 text-red-700 text-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <div className="mt-4 p-5 bg-red-50 border border-red-200 rounded-2xl flex items-start space-x-3 text-red-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
                   <div className="flex-1">
-                    <p className="font-bold mb-1">Planning Interrupted</p>
-                    <p className="opacity-90">{error}</p>
-                    {error.includes("API_KEY") && (
-                      <div className="mt-3 p-3 bg-white/50 rounded-lg border border-red-200">
-                        <p className="text-xs font-bold uppercase mb-1">Troubleshooting Step:</p>
-                        <p className="text-xs leading-relaxed">
-                          Since you are using Vercel, navigate to <strong>Settings &gt; Environment Variables</strong> in your Vercel Dashboard, 
-                          add <code>API_KEY</code>, and perform a <strong>New Deployment</strong>.
-                        </p>
-                      </div>
-                    )}
+                    <p className="font-bold text-base mb-1">Redeployment Required</p>
+                    <p className="text-sm opacity-90 leading-relaxed mb-3">{error}</p>
+                    <div className="bg-white/60 p-3 rounded-lg border border-red-200 text-xs">
+                      <p className="font-bold uppercase tracking-widest text-[10px] mb-1">Vercel Setup Guide:</p>
+                      <ol className="list-decimal list-inside space-y-1 opacity-80">
+                        <li>Go to <strong>Settings</strong> > <strong>Environment Variables</strong> in Vercel.</li>
+                        <li>Add Key: <code>API_KEY</code></li>
+                        <li>Add Value: (Your Google Gemini Key)</li>
+                        <li>Go to <strong>Deployments</strong> tab, click the three dots (...) on your latest build, and select <strong>Redeploy</strong>.</li>
+                      </ol>
+                    </div>
                   </div>
                 </div>
               )}
             </div>
           </aside>
 
-          {/* Results Side */}
+          {/* Dynamic Content Side */}
           <div id="itinerary-section" className="lg:col-span-7 scroll-mt-24">
             {itinerary ? (
               <ItineraryDisplay itinerary={itinerary} onPrint={handlePrint} />
@@ -208,51 +208,27 @@ const App: React.FC = () => {
                   </svg>
                 </div>
                 <h4 className="text-xl font-bold text-stone-400 mb-2">Itinerary Preview</h4>
-                <p className="text-stone-400 max-w-xs">Your personalized travel plan will appear here once you've configured your preferences.</p>
+                <p className="text-stone-400 max-w-xs">Your personalized journey will be visualized here once you choose your preferences.</p>
               </div>
             )}
           </div>
         </div>
-
-        {/* About Section */}
-        <section id="about" className="mt-32 pt-16 border-t border-stone-200 no-print">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h3 className="text-3xl font-bold text-stone-900 mb-6 uppercase tracking-tight">Experience Ethiopia</h3>
-              <div className="space-y-4 text-stone-600 leading-relaxed">
-                <p>
-                  Ethiopia is a land of unique contrasts, from the high Simien Mountains to the depths of the Danakil Depression. 
-                  It is the only African nation to have never been colonized, preserving a rich tapestry of culture, 
-                  orthodoxy, and history that dates back millennia.
-                </p>
-                <p>
-                  Our planner uses advanced AI to synthesize the best routes, lodging, and experiences tailored to your budget 
-                  and the time of year you wish to travel.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <img src="https://picsum.photos/id/1018/400/400" alt="Landscape" className="rounded-2xl shadow-lg" />
-              <img src="https://picsum.photos/id/1019/400/400" alt="Culture" className="rounded-2xl shadow-lg mt-8" />
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer className="mt-32 bg-stone-900 text-white py-20 no-print">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-            <div className="text-center md:text-left">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-10 text-center md:text-left">
+            <div>
               <h2 className="text-2xl font-bold mb-2 text-white">ETHIOPIAN ODYSSEY</h2>
-              <p className="text-stone-400 text-sm">Bespoke Travel Planning since 2024</p>
+              <p className="text-stone-400 text-sm">Luxury Travel Curators</p>
             </div>
             <div className="flex space-x-6 text-sm font-medium text-stone-400">
-              <a href="#" className="hover:text-white transition-colors">Safety Guide</a>
-              <a href="#" className="hover:text-white transition-colors">Visa Info</a>
+              <a href="#" className="hover:text-white transition-colors">Guide</a>
+              <a href="#" className="hover:text-white transition-colors">Safety</a>
               <a href="#" className="hover:text-white transition-colors">Privacy</a>
             </div>
             <div className="text-stone-500 text-xs">
-              © 2024 Ethiopian Odyssey. All rights reserved.
+              © 2024 Ethiopian Odyssey. Preserving the heritage of the Horn of Africa.
             </div>
           </div>
         </div>
