@@ -76,7 +76,9 @@ const ContactSection: React.FC = () => {
             
             <div className="pt-6">
               <a 
-                href={`mailto:${CURATOR_EMAIL}`}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${CURATOR_EMAIL}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block bg-black text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-stone-900 transition-all shadow-xl hover:shadow-black/20 active:scale-95 text-center min-w-[240px]"
               >
                 Email Now
