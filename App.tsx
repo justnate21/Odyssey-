@@ -34,14 +34,18 @@ const App: React.FC = () => {
       }, 150);
     } catch (err: any) {
       console.error("Generation Failed:", err);
-      setError(err.message || "An unexpected error occurred. Please try again.");
+      // More user-friendly handling for quota/rate limit errors
+      if (err.message?.includes('429') || err.message?.includes('quota')) {
+        setError("The travel planner service is currently experiencing high demand. Please wait a few seconds and try again.");
+      } else {
+        setError(err.message || "An unexpected error occurred. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
   };
 
   const handlePrint = () => {
-    // We add a tiny delay to ensure all dynamic elements are rendered
     setTimeout(() => {
       window.print();
     }, 500);
@@ -190,7 +194,7 @@ const App: React.FC = () => {
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                     </svg>
                     <div className="flex-1">
-                      <p className="font-bold text-base mb-1">Service Error</p>
+                      <p className="font-bold text-base mb-1">Service Notification</p>
                       <p className="text-sm opacity-90 leading-relaxed">{error}</p>
                     </div>
                   </div>

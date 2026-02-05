@@ -11,7 +11,6 @@ export const generateItinerary = async (
   duration: number
 ): Promise<Itinerary> => {
   // Use process.env.API_KEY directly in the constructor as per standard guidelines.
-  // Initialization happens inside the function to ensure the most up-to-date key is used.
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
   const prompt = `Generate a comprehensive ${duration}-day travel itinerary for a ${tier} traveler visiting the ${region} region of Ethiopia.
@@ -26,8 +25,8 @@ export const generateItinerary = async (
 
   try {
     const response = await ai.models.generateContent({
-      // Upgraded to 'gemini-3-pro-preview' as this is a complex text task involving multi-day planning and structured JSON output.
-      model: "gemini-3-pro-preview",
+      // Switched to 'gemini-3-flash-preview' for significantly higher quota limits and faster generation.
+      model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
@@ -64,7 +63,6 @@ export const generateItinerary = async (
       }
     });
 
-    // Extract text output using the .text property (not a method) as per the latest SDK rules.
     const text = response.text;
     if (!text) {
       throw new Error("The AI model returned an empty response.");
