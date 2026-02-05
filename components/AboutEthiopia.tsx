@@ -12,148 +12,149 @@ const USER_DANAKIL_URL = "https://i.postimg.cc/jdmD5D67/Danakil_Depression.jpg";
 const USER_HARAR_URL = "https://i.postimg.cc/sgz4XH4P/harar.png";
 const USER_LAKE_TANA_URL = "https://i.postimg.cc/BQXdpbW9/Lake_Tana.jpg";
 const USER_OMO_VALLEY_URL = "https://i.postimg.cc/nL0yTDh2/Omo_Valley.jpg";
+const USER_COFFEE_URL = "https://i.postimg.cc/C1FSXHjb/ethiopia-coffee.jpg";
 
 const AboutEthiopia: React.FC = () => {
   const destinations = [
     {
       name: "Lalibela",
       type: "The New Jerusalem",
-      desc: "Bete Giyorgis (Church of St. George), the most famous of the eleven medieval monolithic churches, carved from a single block of volcanic tuff.",
+      desc: "Home to eleven medieval monolithic churches carved from volcanic tuff, including the world-renowned Bete Giyorgis.",
       img: USER_LALIBELA_URL
     },
     {
       name: "Simien Mountains",
       type: "Nature's Cathedral",
-      desc: "A UNESCO site featuring jagged peaks and deep valleys. Home to the endemic Gelada baboon and Walia ibex.",
+      desc: "A breathtaking UNESCO site with jagged peaks and deep valleys, home to the endemic Gelada baboon and Walia ibex.",
       img: USER_SIMIEN_URL
     },
     {
       name: "Danakil Depression",
       type: "Dallol Sulfur Springs",
-      desc: "The lowest and hottest point on Earth. A kaleidoscopic landscape of acid ponds and sulfur springs in the Afar region.",
+      desc: "One of the lowest and hottest places on Earth, featuring a kaleidoscopic landscape of sulfur springs and acid ponds.",
       img: USER_DANAKIL_URL
     },
     {
       name: "Harar",
       type: "The Fourth Holy City",
-      desc: "An ancient walled city of narrow colorful alleys and 82 mosques. Known for its distinct culture and 'Hyena Men'.",
+      desc: "An ancient walled city of 82 mosques and narrow alleys, famous for its distinct Islamic heritage and 'Hyena Men'.",
       img: USER_HARAR_URL
     },
     {
       name: "Lake Tana",
       type: "Source of the Blue Nile",
-      desc: "Ethiopia's largest lake, famous for its hidden island monasteries and ancient papyrus tankwa boats.",
+      desc: "Ethiopia's largest lake, dotted with ancient island monasteries housing centuries-old Christian treasures.",
       img: USER_LAKE_TANA_URL
     },
     {
       name: "The Omo Valley",
       type: "Cultural Heritage",
-      desc: "Home to dozens of distinct ethnic groups like the Mursi and Hamer, each with ancient traditions and body art.",
+      desc: "A living museum of diverse ethnic groups, each maintaining ancient traditions, body art, and vibrant social structures.",
       img: USER_OMO_VALLEY_URL
     }
   ];
 
   const historyEras = [
     {
-      period: "3.2 Million Years Ago",
-      title: "The Dawn of Man",
-      content: "The discovery of 'Lucy' (Dinknesh) in the Afar region cemented Ethiopia as the birthplace of our species."
+      period: "3.2 Million Years ago",
+      title: "The Birthplace",
+      content: "The discovery of 'Lucy' (Dinknesh) in the Afar region cemented Ethiopia's status as the cradle of the human species."
     },
     {
       period: "1st - 7th Century AD",
-      title: "The Aksumite Empire",
-      content: "A powerful trading empire and the home of the Ark of the Covenant, according to Ethiopian tradition."
+      title: "Aksumite Empire",
+      content: "A global trade power that rivaled Rome and Persia, and the legendary resting place of the Ark of the Covenant."
     },
     {
       period: "12th - 13th Century",
-      title: "The Zagwe Dynasty",
-      content: "The era of King Lalibela, who commissioned the rock-hewn churches to create a pilgrimage site in the mountains."
+      title: "The Zagwe Era",
+      content: "The golden age of King Lalibela, who realized a vision of a 'New Jerusalem' through monolithic mountain architecture."
     },
     {
       period: "1896",
       title: "Victory at Adwa",
-      content: "Ethiopia's historic defeat of the Italian army, ensuring its status as Africa's only uncolonized nation."
+      content: "Ethiopia's historic defeat of the Italian army, preserving its sovereignty as Africa's only uncolonized nation."
     }
   ];
 
   return (
-    <div className="bg-stone-50 min-h-screen">
-      {/* Hero - Featuring user-provided Bete Giyorgis shot */}
-      <section className="relative h-[85vh] flex items-end justify-center overflow-hidden pb-20">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/50 z-10"></div>
+    <div className="bg-stone-50 min-h-screen text-stone-800">
+      {/* Hero Section */}
+      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30 z-10"></div>
         <img 
           src={USER_LALIBELA_URL} 
-          className="absolute inset-0 w-full h-full object-cover object-center scale-105 animate-pulse-slow" 
-          alt="Bete Giyorgis, Lalibela - The House of Saint George"
-          style={{ animationDuration: '45s' }}
+          className="absolute inset-0 w-full h-full object-cover object-center animate-pulse-slow" 
+          alt="Bete Giyorgis, Lalibela"
+          style={{ animationDuration: '30s' }}
         />
-        <div className="relative z-20 text-center px-4 max-w-5xl">
-          <div className="flex items-center justify-center space-x-4 mb-8 fade-up">
-            <div className="h-[1px] w-20 bg-[#F9D616]"></div>
-            <span className="text-[#F9D616] font-bold uppercase tracking-[0.8em] text-[10px]">Land of Origins</span>
-            <div className="h-[1px] w-20 bg-[#F9D616]"></div>
+        <div className="relative z-20 text-center px-6 max-w-5xl">
+          <div className="flex items-center justify-center space-x-3 mb-8 fade-up">
+            <div className="h-px w-12 bg-[#F9D616]/60"></div>
+            <span className="text-[#F9D616] font-bold uppercase tracking-[0.6em] text-[11px]">Land of Origins</span>
+            <div className="h-px w-12 bg-[#F9D616]/60"></div>
           </div>
-          <h2 className="text-8xl md:text-[11rem] font-serif font-bold text-white mb-8 drop-shadow-2xl fade-up leading-[0.85]" style={{ animationDelay: '0.2s' }}>
-            ETHIOPIA <br/><span className="italic font-light tracking-tight opacity-90 text-[0.8em]">Odyssey</span>
+          <h2 className="text-7xl md:text-[8.5rem] font-serif font-bold text-white mb-6 tracking-tighter fade-up leading-[0.85]" style={{ animationDelay: '0.1s' }}>
+            ETHIOPIA <br/><span className="italic font-light opacity-90 text-[0.8em]">Odyssey</span>
           </h2>
-          <p className="text-xl md:text-2xl text-white/80 leading-relaxed font-light max-w-3xl mx-auto mb-12 drop-shadow-lg fade-up" style={{ animationDelay: '0.4s' }}>
-            Explore the monolithic spirit of Lalibela and the kaleidoscope of the Omo. Experience a culture that has remained unbroken for millennia.
+          <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light max-w-2xl mx-auto drop-shadow-lg fade-up" style={{ animationDelay: '0.3s' }}>
+            A journey through three millennia of civilization. From the subterranean monolithic spirit of Lalibela to the vibrant kaleidoscope of the Omo.
           </p>
         </div>
       </section>
 
       {/* History Timeline */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-24">
-          <span className="text-[#006233] font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block tracking-widest">Chronicles</span>
-          <h3 className="text-5xl font-serif font-bold text-stone-900 mb-6 tracking-tight">The Cradle of Civilization</h3>
-          <div className="w-32 h-1 bg-[#006233] mx-auto rounded-full"></div>
+      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <span className="text-[#006233] font-bold uppercase tracking-[0.3em] text-[10px] mb-3 block">Timeline</span>
+          <h3 className="text-4xl md:text-5xl font-serif font-bold text-stone-900 mb-6">The Cradle of Civilization</h3>
+          <div className="w-20 h-1 bg-[#006233] mx-auto rounded-full"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {historyEras.map((era, idx) => (
-            <div key={idx} className="relative group p-10 bg-white rounded-[2.5rem] border border-stone-100 shadow-sm hover:shadow-2xl transition-all duration-700 hover:-translate-y-3">
-              <div className="absolute -top-6 left-10 bg-[#006233] text-white px-5 py-2.5 rounded-xl text-xs font-bold tracking-widest shadow-xl">
+            <div key={idx} className="relative group p-8 bg-white rounded-[2rem] border border-stone-200/60 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+              <div className="text-[#006233] font-bold text-xs tracking-widest uppercase mb-4 opacity-70">
                 {era.period}
               </div>
-              <h4 className="text-2xl font-bold mt-6 mb-6 text-stone-900 tracking-tight">{era.title}</h4>
-              <p className="text-stone-500 text-sm leading-relaxed font-medium">{era.content}</p>
+              <h4 className="text-2xl font-bold mb-4 text-stone-900">{era.title}</h4>
+              <p className="text-stone-600 text-sm leading-relaxed">{era.content}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Visiting Places Grid */}
-      <section className="bg-stone-950 py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-24">
+      {/* Essential Destinations Grid */}
+      <section className="bg-stone-950 py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-baseline mb-20 border-b border-white/10 pb-12">
             <div className="max-w-2xl">
-              <span className="text-[#F9D616] font-bold uppercase tracking-[0.4em] text-[10px] block mb-4">The Circuit</span>
-              <h3 className="text-6xl font-serif font-bold text-white mb-8 leading-tight italic">Essential <br/>Odysseys</h3>
-              <p className="text-stone-400 text-xl leading-relaxed font-light">
-                From the subterranean wonders of the Lasta Mountains to the vibrant gates of Harar Jugol.
+              <span className="text-[#F9D616] font-bold uppercase tracking-[0.3em] text-[10px] block mb-4">The Circuit</span>
+              <h3 className="text-5xl font-serif font-bold text-white mb-6">Essential Odysseys</h3>
+              <p className="text-stone-400 text-lg leading-relaxed font-light">
+                Discover the subterranean wonders of the Lasta Mountains and the vibrant medieval gates of Harar.
               </p>
             </div>
-            <div className="mt-12 md:mt-0 flex space-x-1 mb-2">
-              <div className="w-20 h-1 bg-[#EF3340]"></div>
-              <div className="w-20 h-1 bg-[#F9D616]"></div>
-              <div className="w-20 h-1 bg-[#006233]"></div>
+            <div className="mt-8 md:mt-0 flex space-x-1">
+              <div className="w-12 h-0.5 bg-[#EF3340]"></div>
+              <div className="w-12 h-0.5 bg-[#F9D616]"></div>
+              <div className="w-12 h-0.5 bg-[#006233]"></div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {destinations.map((dest, idx) => (
-              <div key={idx} className="group relative rounded-[3rem] overflow-hidden aspect-[3/4] shadow-2xl">
+              <div key={idx} className="group relative rounded-[2.5rem] overflow-hidden aspect-[3/4] shadow-2xl">
                 <img 
                   src={dest.img} 
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2500ms] group-hover:scale-110" 
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" 
                   alt={dest.name}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-10 w-full translate-y-6 group-hover:translate-y-0 transition-transform duration-700">
-                  <span className="text-[#F9D616] text-xs font-bold uppercase tracking-[0.4em] mb-3 block opacity-90">{dest.type}</span>
-                  <h4 className="text-4xl font-serif font-bold text-white mb-6 leading-none">{dest.name}</h4>
-                  <p className="text-white/70 text-base leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-8 w-full transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                  <span className="text-[#F9D616] text-[10px] font-bold uppercase tracking-[0.3em] mb-2 block">{dest.type}</span>
+                  <h4 className="text-3xl font-serif font-bold text-white mb-4 leading-tight">{dest.name}</h4>
+                  <p className="text-white/70 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
                     {dest.desc}
                   </p>
                 </div>
@@ -163,54 +164,49 @@ const AboutEthiopia: React.FC = () => {
         </div>
       </section>
 
-      {/* Cultural Focus */}
-      <section className="py-32 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-24">
+      {/* Cultural Focus Section */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-20">
           <div className="lg:w-1/2">
             <div className="relative group">
-              <div className="absolute -inset-6 border border-stone-200 rounded-[5rem] -z-10 translate-x-6 translate-y-6 transition-transform duration-1000 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+              <div className="absolute -inset-4 border border-stone-200 rounded-[3.5rem] -z-10 translate-x-4 translate-y-4 transition-transform duration-700 group-hover:translate-x-2 group-hover:translate-y-2"></div>
               <img 
-                src="https://images.unsplash.com/photo-1544333323-58739b8a82de?q=80&w=1200&auto=format&fit=crop" 
-                className="rounded-[4.5rem] shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-[1500ms]"
-                alt="Ethiopian Coffee Ceremony Preparation"
+                src={USER_COFFEE_URL} 
+                className="rounded-[3rem] shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-1000 w-full h-auto object-cover aspect-square md:aspect-[4/3]"
+                alt="Ethiopian Coffee Ceremony"
               />
-              <div className="absolute top-10 -right-10 bg-white p-6 rounded-3xl shadow-xl border border-stone-100 hidden md:block animate-bounce-slow">
-                <span className="text-4xl block mb-2">☕</span>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-stone-400">Habesha Spirit</p>
-              </div>
             </div>
           </div>
-          <div className="lg:w-1/2 space-y-10">
-            <h3 className="text-6xl font-serif font-bold text-stone-900 leading-[1.1]">The Soul of <br/><span className="text-[#006233] italic tracking-tight">Buna</span></h3>
-            <p className="text-stone-600 text-xl leading-relaxed font-light">
-              Ethiopia is the birthplace of the coffee bean. In every village, the ceremony is a sacred social contract, a ritual of patience and profound connection.
+          <div className="lg:w-1/2">
+            <h3 className="text-5xl font-serif font-bold text-stone-900 leading-tight mb-8">
+              The Soul of <span className="text-[#006233] italic">Buna</span>
+            </h3>
+            <p className="text-stone-700 text-lg leading-relaxed font-light mb-10 max-w-xl">
+              As the birthplace of the coffee bean, the Ethiopian coffee ceremony is more than a beverage—it's a sacred ritual of hospitality and community that has remained unchanged for generations.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-4">
-              <div className="border-l-4 border-[#F9D616] pl-6 py-2">
-                <h5 className="font-bold text-xl text-stone-900 mb-3 tracking-tight">Gourmet Heritage</h5>
-                <p className="text-stone-500 text-sm leading-relaxed italic">Injera and spicy Wot—a communal feast that defines the Habesha table.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="border-l-2 border-[#F9D616] pl-6">
+                <h5 className="font-bold text-stone-900 mb-2">Culinary Heritage</h5>
+                <p className="text-stone-600 text-sm leading-relaxed">The communal art of Injera and Wot defines the Habesha table.</p>
               </div>
-              <div className="border-l-4 border-[#EF3340] pl-6 py-2">
-                <h5 className="font-bold text-xl text-stone-900 mb-3 tracking-tight">Living Script</h5>
-                <p className="text-stone-500 text-sm leading-relaxed italic">Ge'ez: The visual heartbeat of Ethiopian liturgy and historic archives.</p>
+              <div className="border-l-2 border-[#EF3340] pl-6">
+                <h5 className="font-bold text-stone-900 mb-2">Living Ge'ez</h5>
+                <p className="text-stone-600 text-sm leading-relaxed">One of the world's oldest scripts, still breathing through sacred liturgy.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Back CTA */}
-      <section className="py-40 bg-stone-50 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] text-[30rem] font-serif pointer-events-none select-none">
-          Cradle
-        </div>
-        <div className="max-w-3xl mx-auto px-4 relative z-10">
-          <h3 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 mb-12 tracking-tight">Your odyssey to the source of humanity.</h3>
+      {/* Final CTA */}
+      <section className="py-32 bg-stone-50 border-t border-stone-200 text-center">
+        <div className="max-w-3xl mx-auto px-6">
+          <h3 className="text-4xl md:text-5xl font-serif font-bold text-stone-900 mb-10">Start your odyssey today.</h3>
           <button 
             onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }} 
-            className="inline-block bg-stone-950 text-white px-16 py-6 rounded-full font-bold text-lg shadow-2xl shadow-stone-900/40 hover:-translate-y-2 hover:shadow-stone-900/60 transition-all duration-500"
+            className="inline-block bg-stone-950 text-white px-12 py-5 rounded-full font-bold text-lg shadow-xl hover:bg-black hover:-translate-y-1 transition-all duration-300"
           >
-            Start Your Planner
+            Design Your Journey
           </button>
         </div>
       </section>
